@@ -3,9 +3,9 @@
   "version": "0.0.1",
   "description": "Alexa Top Site Amazon API",
   "scripts": {
-    "start": "nodejs app.js"
+    "start": "./app.js"
   },
   "dependencies": {
-    "superagent": "latest"
+    "superagent": "^2.3.0"
   }
 }

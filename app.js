@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 var access_key = process.env.AWS_ALEXA_ACCESS_KEY || '';
 var secret = process.env.AWS_ALEXA_SECRET || '';
 
