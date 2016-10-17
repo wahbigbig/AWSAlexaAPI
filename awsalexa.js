@@ -83,7 +83,7 @@ module.exports = function(access_key, secret) {
     //encrypt with SHA1 or SHA256 according to the options
     var signature = crypto.createHmac(encryption, secret).update(sign_str).digest('base64');
     var url = "http://" + endpoint + "/?" + (query) + "&Signature=" + signature;
-
+    //console.log(url);
     request.get(url).end(function(err, res) {
       callback(err, res);
     });

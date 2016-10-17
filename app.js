@@ -28,7 +28,7 @@ awsalexa.alexawis_urlinfo(options, function(err, response) {
   console.log(response.text);
 });
 */
-/*
+
 var options = [
   {key: 'Url', value: 'http://www.promise.com.hk'},
   {key: 'ResponseGroup', value: 'History'},
@@ -37,13 +37,14 @@ var options = [
 awsalexa.alexaawis_traffichistory(options, function(err, response) {
   console.log(response.text);
 });
-*/
 
+/*
 var options = [
   {key: 'Url', value: 'http://www.promise.com.hk'},
   {key: 'ResponseGroup', value: 'SitesLinkingIn'},
   {key: 'Start', value: '0'}
 ];
-awsalexa.alexaawis_traffichistory(options, function(err, response) {
+awsalexa.alexawis_siteslinkingin(options, function(err, response) {
   console.log(response.text);
 });
+*/
