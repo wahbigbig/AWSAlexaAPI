@@ -1,0 +1,11 @@
+{
+  "name": "alexa_top_site",
+  "version": "0.0.1",
+  "description": "Alexa Top Site Amazon API",
+  "scripts": {
+    "start": "nodejs app.js"
+  },
+  "dependencies": {
+    "superagent": "latest"
+  }
+}
