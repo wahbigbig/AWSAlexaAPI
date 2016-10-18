@@ -2,8 +2,27 @@
   "name": "alexa_top_site",
   "version": "0.0.1",
   "description": "Alexa Top Site Amazon API",
+  "main": "awsalexa.js",
+  "keywords": [
+    "aws",
+    "alexa"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wahbigbig/AWSAlexaAPI.git"
+  },
+  "author": "wahbigbig",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/wahbigbig/AWSAlexaAPI/issues"
+  },
+  "homepage": "https://github.com/wahbigbig/AWSAlexaAPI#readme",
   "scripts": {
-    "start": "./app.js"
+    "start": "./app.js",
+    "release:major": "npm version major && git push origin --follow-tags",
+    "release:minor": "npm version minor && git push origin --follow-tags",
+    "release:patch": "npm version patch && git push origin --follow-tags",
+    "prerelease": "npm version prerelease && git push origin --follow-tags"
   },
   "dependencies": {
     "superagent": "^2.3.0"
