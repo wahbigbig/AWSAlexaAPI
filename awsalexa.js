@@ -24,13 +24,14 @@ module.exports = function(access_key, secret) {
   }
 
   function alexaawis_traffichistory(options, callback) {
+    var o = options.slice(0); //create a true copy of the options array
     var endpoint = 'awis.amazonaws.com';
-    options.push({key: 'Action', value: 'TrafficHistory'});
-    options.push({key: 'AWSAccessKeyId', value: access_key});
-    options.push({key: 'Timestamp', value: new Date().toISOString()});
-    options.push({key: 'SignatureVersion', value: 2});
-    options.push({key: 'SignatureMethod', value: 'HmacSHA1'});
-    process(endpoint, options, callback);
+    o.push({key: 'Action', value: 'TrafficHistory'});
+    o.push({key: 'AWSAccessKeyId', value: access_key});
+    o.push({key: 'Timestamp', value: new Date().toISOString()});
+    o.push({key: 'SignatureVersion', value: 2});
+    o.push({key: 'SignatureMethod', value: 'HmacSHA1'});
+    process(endpoint, o, callback);
   }
 
   function alexawis_siteslinkingin(options, callback) {
@@ -79,12 +80,13 @@ module.exports = function(access_key, secret) {
       return obj.key + "=" + encodeURIComponent(obj.value);
     }).join('&');
 
-    var sign_str = "GET\n" + endpoint + "\n/\n" + query;
+    var sign_str = "GET\n" + endpoint + "\n/\n" + "" + query;
     //encrypt with SHA1 or SHA256 according to the options
     var signature = crypto.createHmac(encryption, secret).update(sign_str).digest('base64');
     var url = "http://" + endpoint + "/?" + (query) + "&Signature=" + signature;
-
-    request.get(url).end(function(err, res) {
+    //console.log(url);
+    request.get(url)
+      .end(function(err, res) {
       callback(err, res);
     });
   }

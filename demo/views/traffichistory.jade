@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  h1 Alexa Web Information Service
+  p TrafficHistory
+  form(method='post')
+      input(type='text', name='url')
+      input(type='submit', value='Submit')
+  br
+  !{url}
+  table(border='1')
+    tr
+      td Date
+      td PageView Per Million
+      td Rank
+      td Reach Per Million
+    - awsData.forEach(function(d) {
+      tr
+        td= d['aws:Date'][0]
+        td= d['aws:PageViews'][0]['aws:PerMillion']
+        td= d['aws:Rank'][0]
+        td= d['aws:Reach'][0]['aws:PerMillion']
+    - })
