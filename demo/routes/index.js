@@ -4,7 +4,7 @@ var router = express.Router();
 var access_key = process.env.AWS_ALEXA_ACCESS_KEY || '';
 var secret = process.env.AWS_ALEXA_SECRET || '';
 
-const awsalexa = require('../../awsalexa.js')(access_key, secret);
+const awsalexa = require('../awsalexa.js')(access_key, secret);
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -63,7 +63,6 @@ router.post('/traffichistory', function(req, res, next) {
     if (count > 5) {
       callback(true, '');
     } else {
-      awsalexa = require('../../awsalexa.js')(access_key, secret);
       awsalexa.alexaawis_traffichistory(options, function(err, response) {
         if (response.statusCode == 200) {
           var parseString = require('xml2js').parseString;
@@ -72,6 +71,8 @@ router.post('/traffichistory', function(req, res, next) {
             callback(false, data);
           });
         } else {
+          console.log(response.statusCode);
+          console.log(response.text);
           //try agin if response is not 200 (to be fixed for the reason of 403)
           setTimeout(function() {
             send_request(options, ++count, callback);
